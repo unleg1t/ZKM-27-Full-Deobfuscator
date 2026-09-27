@@ -4,7 +4,7 @@ plugins {
     id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
 
-group = 'cn.openvape'
+group = 'unlegit.zkm'
 version = '1.0.0'
 
 repositories { mavenCentral() }
@@ -18,7 +18,7 @@ dependencies {
 }
 
 application {
-    mainClass = 'cn.openvape.flowdeobf.ZkmDeobfuscatorApp'
+    mainClass = 'unlegit.zkm.ZkmDeobfuscatorApp'
 }
 
 java {
@@ -37,7 +37,7 @@ shadowJar {
     mergeServiceFiles()
     manifest {
         attributes(
-                'Main-Class': 'cn.openvape.flowdeobf.ZkmDeobfuscatorApp',
+                'Main-Class': 'unlegit.zkm.ZkmDeobfuscatorApp',
                 'Implementation-Title': 'ZKM 27 Full Deobfuscator',
                 'Implementation-Version': version
         )
