@@ -1,0 +1,53 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+group = 'cn.openvape'
+version = '1.0.0'
+
+repositories { mavenCentral() }
+
+dependencies {
+    implementation 'org.ow2.asm:asm:9.7.1'
+    implementation 'org.ow2.asm:asm-tree:9.7.1'
+    implementation 'org.ow2.asm:asm-analysis:9.7.1'
+    implementation 'org.ow2.asm:asm-util:9.7.1'
+    implementation 'org.ow2.asm:asm-commons:9.7.1'
+}
+
+application {
+    mainClass = 'cn.openvape.flowdeobf.ZkmDeobfuscatorApp'
+}
+
+java {
+    toolchain { languageVersion = JavaLanguageVersion.of(21) }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 8
+}
+
+shadowJar {
+    archiveBaseName.set('zkm27-full-deobfuscator')
+    archiveClassifier.set('')
+    archiveVersion.set(version)
+    mergeServiceFiles()
+    manifest {
+        attributes(
+                'Main-Class': 'cn.openvape.flowdeobf.ZkmDeobfuscatorApp',
+                'Implementation-Title': 'ZKM 27 Full Deobfuscator',
+                'Implementation-Version': version
+        )
+    }
+}
+
+tasks.named('build') {
+    dependsOn shadowJar
+}
+
+tasks.named('jar') {
+    enabled = false
+}
