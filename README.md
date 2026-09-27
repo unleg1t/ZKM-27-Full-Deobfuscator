@@ -69,6 +69,20 @@ java -jar build/libs/zkm27-full-deobfuscator-1.0.0.jar \
 No arguments opens the Swing GUI. With arguments, the same pipeline runs
 headless.
 
+## Examples
+
+The `examples/yuri/` folder has the Yuri 1.8.9 fixtures from the first full
+pipeline run:
+
+| File | Role |
+|---|---|
+| `yuri-original.jar` | Unobfuscated input |
+| `yuri-zkm27-obfuscated.jar` | ZKM 27 output |
+| `yuri-zkm27-changelog.txt` | ZKM changelog (needed for names) |
+| `yuri-deobfuscated.jar` | This tool's output |
+
+See [examples/yuri/README.md](examples/yuri/README.md) for the replay command.
+
 ## Credits
 
 - **unlegit** — this packaging, GUI, full-pipeline wiring, XOR / opaque /
